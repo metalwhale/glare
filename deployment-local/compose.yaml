@@ -1,0 +1,19 @@
+services:
+  node1:
+    build:
+      context: ../glare/
+      dockerfile: Dockerfile.local
+    volumes:
+      - ../:/usr/src/glare/
+    command: ["bash"]
+    tty: true
+    working_dir: /usr/src/glare/glare/
+  node2:
+    build:
+      context: ../glare/
+      dockerfile: Dockerfile.local
+    volumes:
+      - ../:/usr/src/glare/
+    command: ["bash"]
+    tty: true
+    working_dir: /usr/src/glare/glare/
