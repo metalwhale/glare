@@ -3,6 +3,10 @@ services:
     build:
       context: ../glare/
       dockerfile: Dockerfile.local
+    hostname: node1
+    environment:
+      - ERL_FLAGS=-sname glare -setcookie glare
+      - GLARE_PEER_NODE_NAME=glare@node2
     volumes:
       - ../:/usr/src/glare/
     command: ["bash"]
@@ -12,6 +16,10 @@ services:
     build:
       context: ../glare/
       dockerfile: Dockerfile.local
+    hostname: node2
+    environment:
+      - ERL_FLAGS=-sname glare -setcookie glare
+      - GLARE_PEER_NODE_NAME=glare@node1
     volumes:
       - ../:/usr/src/glare/
     command: ["bash"]
